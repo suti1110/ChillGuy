@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+    SpriteRenderer spriter;
     Rigidbody2D rb;
     [SerializeField] private float MoveSpeed;
     [SerializeField] private float JumpForce;
@@ -12,6 +13,7 @@ public class Move : MonoBehaviour
     private void Awake()
     {
         rb  = GetComponent<Rigidbody2D>();
+        spriter = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -41,4 +43,6 @@ public class Move : MonoBehaviour
             isGround = true;
         }
     }
+
+
 }
