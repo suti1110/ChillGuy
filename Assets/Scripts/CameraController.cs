@@ -15,13 +15,11 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
-
         height = Camera.main.orthographicSize;
         width = height * Screen.width / Screen.height;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         LimitCameraArea();
     }
