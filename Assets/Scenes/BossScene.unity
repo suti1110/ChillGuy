@@ -1371,6 +1371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChillGuy
       objectReference: {fileID: 0}
+    - target: {fileID: 3640939722274126722, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
+      propertyPath: heartImagePrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8360653856842967367, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6

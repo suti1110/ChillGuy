@@ -6,18 +6,22 @@ public class GetDamage : MonoBehaviour
     private Color originalColor;
     private Renderer objectRenderer;
 
-    void Start()
+
+    void Start()    
     {
        
         objectRenderer = GetComponent<Renderer>();
         originalColor = objectRenderer.material.color;
+       
     }
+
+   
 
     public void ApplyDamage()
     {
         health -= 1;
         Debug.Log("Damage Applied. Remaining Health: " + health);
-
+        FindObjectOfType<HeartDisplay>().UpdateHeartDisplay();
         objectRenderer.material.color = new Color(255, 0, 0, 0.4f);
         gameObject.layer = 7;
         StartCoroutine(WaitAction.wait(0.5f, () =>
