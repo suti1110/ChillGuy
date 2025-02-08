@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     public int HP = 20;
     public enum Type
@@ -11,9 +11,13 @@ public class Enemy : MonoBehaviour
         Boss
     }
     public Type type;
+    public float MoveSpeed;
+    public LayerMask layerMask;
+
+    protected abstract void Move();
 
     protected Collider2D[] AttackRange(float Range)
     {
-        return Physics2D.OverlapCircleAll(transform.position, Range, 6);
+        return Physics2D.OverlapCircleAll(transform.position, Range, layerMask);
     }
 }
