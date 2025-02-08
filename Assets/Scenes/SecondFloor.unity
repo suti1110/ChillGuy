@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 227232295}
   - component: {fileID: 227232294}
   - component: {fileID: 227232296}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Thorn (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,11 +344,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360653856842967367, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -19.85
       objectReference: {fileID: 0}
     - target: {fileID: 8360653856842967367, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.48
       objectReference: {fileID: 0}
     - target: {fileID: 8360653856842967367, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
       propertyPath: m_LocalPosition.z
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 440784669}
   - component: {fileID: 440784671}
   - component: {fileID: 440784672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Thorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1712,6 +1712,83 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &640317711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 640317713}
+  - component: {fileID: 640317712}
+  m_Layer: 0
+  m_Name: Wall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &640317712
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640317711}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 2.3863258}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 10.005002}
+  m_EdgeRadius: 0
+--- !u!4 &640317713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640317711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.54, y: -2.4500833, z: 6.4474006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &676498478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,7 +1803,7 @@ GameObject:
   - component: {fileID: 676498481}
   - component: {fileID: 676498480}
   - component: {fileID: 676498479}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpinningObstacle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1973,7 +2050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 830772169}
   - component: {fileID: 830772168}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Thorn (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2168,7 +2245,7 @@ GameObject:
   - component: {fileID: 1079330522}
   - component: {fileID: 1079330521}
   - component: {fileID: 1079330520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ThornBox (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2371,7 +2448,7 @@ GameObject:
   - component: {fileID: 1386202204}
   - component: {fileID: 1386202203}
   - component: {fileID: 1386202202}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpinningObstacle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2684,7 +2761,7 @@ GameObject:
   - component: {fileID: 1442922956}
   - component: {fileID: 1442922958}
   - component: {fileID: 1442922959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpinningObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2996,7 +3073,7 @@ GameObject:
   - component: {fileID: 1799984805}
   - component: {fileID: 1799984804}
   - component: {fileID: 1799984806}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ThornBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3168,7 +3245,7 @@ GameObject:
   - component: {fileID: 1836256160}
   - component: {fileID: 1836256159}
   - component: {fileID: 1836256158}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpinningObstacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3661,3 +3738,4 @@ SceneRoots:
   - {fileID: 47362638}
   - {fileID: 869114675}
   - {fileID: 367705941}
+  - {fileID: 640317713}
