@@ -33,30 +33,39 @@ public class Attack : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J) && ChillGage >= 30)
+        if (!Dialogue.talking)
         {
-            ChillGage -= 30;
-            DOTween.To(() => transform.position, x => transform.position = x, new Vector3(transform.position.x + (GetComponent<SpriteRenderer>().flipX ? 1 : -1) * 10, transform.position.y), DashTime);
-            StartCoroutine(Dash());
-        }
-        if (Enemy != null && Input.GetKey(KeyCode.K))
-        {
-            if (GetComponent<SpriteRenderer>().flipX)
+            if (Input.GetKeyDown(KeyCode.J) && ChillGage >= 30)
             {
-                EyesLights[0].SetActive(true);
-                EyesLights[0].transform.rotation = Quaternion.Euler(0, 90, -90);
-                EyesLights[1].SetActive(true);
-                EyesLights[1].transform.rotation = Quaternion.Euler(0, 0, 90);
-                EyesLights[1].transform.position = new Vector3(transform.position.x + 17.14f, transform.position.y + 0.62f, transform.position.z);
+                ChillGage -= 30;
+                DOTween.To(() => transform.position, x => transform.position = x, new Vector3(transform.position.x + (GetComponent<SpriteRenderer>().flipX ? 1 : -1) * 10, transform.position.y), DashTime);
+                StartCoroutine(Dash());
             }
-            else if (!GetComponent<SpriteRenderer>().flipX)
+            if (Enemy != null && Input.GetKey(KeyCode.K))
             {
-                EyesLights[0].SetActive(true);
-                EyesLights[0].transform.rotation = Quaternion.Euler(180, 90, -90);
-                EyesLights[1].SetActive(true);
-                EyesLights[1].transform.rotation = Quaternion.Euler(0, 0, 270);
-                EyesLights[1].transform.position = new Vector3(transform.position.x - 17.14f, transform.position.y + 0.62f, transform.position.z);
+                if (GetComponent<SpriteRenderer>().flipX)
+                {
+                    EyesLights[0].SetActive(true);
+                    EyesLights[0].transform.rotation = Quaternion.Euler(0, 90, -90);
+                    EyesLights[1].SetActive(true);
+                    EyesLights[1].transform.rotation = Quaternion.Euler(0, 0, 90);
+                    EyesLights[1].transform.position = new Vector3(transform.position.x + 17.14f, transform.position.y + 0.62f, transform.position.z);
+                }
+                else if (!GetComponent<SpriteRenderer>().flipX)
+                {
+                    EyesLights[0].SetActive(true);
+                    EyesLights[0].transform.rotation = Quaternion.Euler(180, 90, -90);
+                    EyesLights[1].SetActive(true);
+                    EyesLights[1].transform.rotation = Quaternion.Euler(0, 0, 270);
+                    EyesLights[1].transform.position = new Vector3(transform.position.x - 17.14f, transform.position.y + 0.62f, transform.position.z);
+                }
             }
+            else
+            {
+                EyesLights[0].SetActive(false);
+                EyesLights[1].SetActive(false);
+            }
+            image.fillAmount = ChillGage / 100f;
         }
         else
         {
@@ -69,18 +78,18 @@ public class Attack : MonoBehaviour
         {
             if (!isLazering)
             {
-                // ·¹ÀÌÀú ¼Ò¸®°¡ Àç»ýµÇÁö ¾Ê°í ÀÖÀ¸¸é Àç»ý
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
                 LazerSource.Play();
                 isLazering = true;
             }
         }
 
-        // 'k' Å°¸¦ ¶ÃÀ» ¶§ ¼Ò¸®°¡ ¸ØÃßµµ·Ï
+        // 'k' Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½
         if (Input.GetKeyUp(KeyCode.K))
         {
             if (isLazering)
             {
-                // ·¹ÀÌÀú ¼Ò¸®°¡ Àç»ýµÇ°í ÀÖÀ¸¸é Á¤Áö
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 LazerSource.Stop();
                 isLazering = false;
             }

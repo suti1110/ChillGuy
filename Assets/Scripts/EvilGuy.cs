@@ -30,39 +30,62 @@ public class EvilGuy : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (attackPendingTime > 0)
+        if (!Dialogue.talking)
         {
-            attackPendingTime -= Time.deltaTime;
-        }
-
-        if (attackPendingTime <= 0)
-        {
-            anim.SetBool("Walking", false);
-            Collider2D[] hitColliders1 = AttackRange(2.5f);
-            Collider2D[] hitColliders2 = AttackRange(10f);
-            if (hitColliders2.Length > 0)
+            if (attackPendingTime > 0)
             {
-                if (hitColliders1.Length > 0)
+                attackPendingTime -= Time.deltaTime;
+            }
+
+            if (attackPendingTime <= 0)
+            {
+                anim.SetBool("Walking", false);
+                Collider2D[] hitColliders1 = AttackRange(2.5f);
+                Collider2D[] hitColliders2 = AttackRange(10f);
+                if (hitColliders2.Length > 0)
                 {
-                    attackPendingTime = 0.75f;
-                    anim.SetTrigger("ShortAttack");
-                    GetComponent<SpriteRenderer>().flipX = transform.position.x - player.position.x < 0;
-                    StartCoroutine(WaitAction.wait(0.15f, () =>
+                    if (hitColliders1.Length > 0)
                     {
-                        if (hitColliders1.Length > 0)
+                        attackPendingTime = 0.75f;
+                        anim.SetTrigger("ShortAttack");
+                        GetComponent<SpriteRenderer>().flipX = transform.position.x - player.position.x < 0;
+                        StartCoroutine(WaitAction.wait(0.15f, () =>
                         {
-                            player.GetComponent<GetDamage>().ApplyDamage();
-                        }
-                    }));
+                            if (hitColliders1.Length > 0)
+                            {
+                                player.GetComponent<GetDamage>().ApplyDamage();
+                            }
+                        }));
+                    }
+                    else
+                    {
+                        attackPendingTime = 1.5f;
+                        anim.SetTrigger("MidAttack");
+                        GetComponent<SpriteRenderer>().flipX = transform.position.x - player.position.x < 0;
+                        StartCoroutine(WaitAction.wait(0.2f, () =>
+                        {
+                            Instantiate(ChillLi, transform.position, Quaternion.identity);
+                        }));
+                    }
                 }
                 else
                 {
-                    attackPendingTime = 1.5f;
-                    anim.SetTrigger("MidAttack");
-                    GetComponent<SpriteRenderer>().flipX = transform.position.x - player.position.x < 0;
-                    StartCoroutine(WaitAction.wait(0.2f, () =>
+                    attackPendingTime = 3f;
+                    anim.SetTrigger("LongAttack");
+                    StartCoroutine(WaitAction.wait(() => { return gameObject.GetComponent<SpriteRenderer>().sprite == JumpTiming; }, () =>
                     {
-                        Instantiate(ChillLi, transform.position, Quaternion.identity);
+                        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                        rb.gravityScale = 0;
+                        DOTween.To(() => transform.position, x => transform.position = x, new Vector3(player.position.x, player.position.y + 5), 0.5f);
+                        StartCoroutine(WaitAction.wait(0.5f, () =>
+                        {
+                            rb.velocity = new Vector2(0, -50);
+                            StartCoroutine(WaitAction.wait(0.1f, () =>
+                            {
+                                particle.GetComponent<ParticleSystem>().Play();
+                                rb.gravityScale = 1;
+                            }));
+                        }));
                     }));
                 }
             }
@@ -90,9 +113,6 @@ public class EvilGuy : Enemy
                     }));
                 }));
             }
-        }
-        else
-        {
             Move();
         }
     }
@@ -130,7 +150,7 @@ public class EvilGuy : Enemy
         if (collision.gameObject.CompareTag("Attack"))
         {
             HP -= Time.deltaTime;
-            if (HP <= 0) Destroy(gameObject);
+            if (HP <= 0) GameObject.Find("Dialogue").GetComponent<BossEnd>().GameClear();
         }
     }
 }

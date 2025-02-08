@@ -35,7 +35,7 @@ public class HeartDisplay : MonoBehaviour
         // 현재 Hearth 수에 맞는 하트를 추가
         for (int i = 0; i < getDamageScript.health; i++)
         {
-            Hearts[i] = Instantiate(heartPrefab, heartContainer.position + new Vector3(i * 70, 0), Quaternion.identity);
+            Hearts[i] = Instantiate(heartPrefab, heartContainer.position + new Vector3(i * 100, 0), Quaternion.identity);
             Hearts[i].transform.parent = transform;
             // 하트 위치를 조정하거나 추가적인 설정을 할 수 있습니다.
         }

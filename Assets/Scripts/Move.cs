@@ -28,40 +28,38 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Move the character horizontally based on input
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * MoveSpeed, rb.velocity.y);
-
-        // Flip the sprite depending on the movement direction
-        if (rb.velocity.x > 0)
-            spriter.flipX = true;
-        else if (rb.velocity.x < 0)
-            spriter.flipX = false;
-
-        // Set the "isMoving" animation parameter based on whether the character is moving
-        anim.SetBool("isMoving", rb.velocity.x != 0);
-
-        // Play walking sound when moving and stop when not
-        if (rb.velocity.x != 0 && !audioSource.isPlaying && isGround)
+        if (!Dialogue.talking)
         {
-            audioSource.PlayOneShot(walkingSound); // Play walking sound
-        }
-        else if (rb.velocity.x == 0 && audioSource.isPlaying)
-        {
-            audioSource.Stop(); // Stop walking sound
+            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * MoveSpeed, rb.velocity.y);
+            if (rb.velocity.x > 0) GetComponent<SpriteRenderer>().flipX = true;
+            else if (rb.velocity.x < 0) GetComponent<SpriteRenderer>().flipX = false;
+            anim.SetBool("isMoving", rb.velocity.x != 0);
+            // Play walking sound when moving and stop when not
+            if (rb.velocity.x != 0 && !audioSource.isPlaying && isGround)
+            {
+                audioSource.PlayOneShot(walkingSound); // Play walking sound
+            }
+            else if (rb.velocity.x == 0 && audioSource.isPlaying)
+            {
+                audioSource.Stop(); // Stop walking sound
+            }
         }
     }
 
     private void Update()
     {
-        if (isGround && Input.GetKeyDown(KeyCode.Space))
+        if (!Dialogue.talking)
         {
-            rb.AddForce(new Vector2(0, Input.GetAxisRaw("Vertical") * JumpForce), ForceMode2D.Impulse);
-            isGround = false;
-            anim.SetBool("isJumping", true);
-        }
-        if (rb.velocity == Vector2.zero)
-        {
-            Attack.ChillGage += 10 * Time.deltaTime;
+            if (isGround && Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(new Vector2(0, Input.GetAxisRaw("Vertical") * JumpForce), ForceMode2D.Impulse);
+                isGround = false;
+                anim.SetBool("isJumping", true);
+            }
+            if (rb.velocity == Vector2.zero)
+            {
+                Attack.ChillGage += 10 * Time.deltaTime;
+            }
         }
     }
 
