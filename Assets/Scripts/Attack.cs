@@ -22,10 +22,10 @@ public class Attack : MonoBehaviour
 
     private void Update()
     {
-        if (rb.velocity.x != 0 && Input.GetKeyDown(KeyCode.J) && ChillGage >= 30)
+        if (Input.GetKeyDown(KeyCode.J) && ChillGage >= 30)
         {
             ChillGage -= 30;
-            DOTween.To(() => transform.position, x => transform.position = x, new Vector3(transform.position.x + (rb.velocity.x > 0 ? 1 : rb.velocity.x < 0 ? -1 : 0) * 10, transform.position.y), DashTime);
+            DOTween.To(() => transform.position, x => transform.position = x, new Vector3(transform.position.x + (GetComponent<SpriteRenderer>().flipX ? 1 : -1) * 10, transform.position.y), DashTime);
             StartCoroutine(Dash());
         }
         if (Enemy != null && Input.GetKey(KeyCode.K))
