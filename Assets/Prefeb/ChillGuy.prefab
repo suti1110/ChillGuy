@@ -4926,9 +4926,9 @@ GameObject:
   - component: {fileID: 573590553710066102}
   - component: {fileID: 2067264152468054731}
   - component: {fileID: 1256848475426346838}
-  - component: {fileID: 2109625161268759089}
   - component: {fileID: 3640939722274126722}
   - component: {fileID: -3309595557427580053}
+  - component: {fileID: 7344747336542348356}
   m_Layer: 6
   m_Name: ChillGuy
   m_TagString: Player
@@ -4994,7 +4994,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1a0e0db61f9c3e429a6ae1d4e495073, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5046,8 +5046,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &2109625161268759089
-BoxCollider2D:
+--- !u!114 &3640939722274126722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2882137995803088567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1c1f734aa08c343beb9befca242c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+--- !u!114 &-3309595557427580053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2882137995803088567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9e020704ee4a1439b88d0eb9433a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AfterImage: {fileID: 3879598417576605991, guid: 340d3cf5afa7b444aaab1aec305b265b, type: 3}
+  EyesLights:
+  - {fileID: 1158961016468134768}
+  - {fileID: 2002004615924343533}
+--- !u!70 &7344747336542348356
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5078,45 +5107,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &3640939722274126722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2882137995803088567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a1c1f734aa08c343beb9befca242c75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
---- !u!114 &-3309595557427580053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2882137995803088567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf9e020704ee4a1439b88d0eb9433a1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AfterImage: {fileID: 3879598417576605991, guid: 340d3cf5afa7b444aaab1aec305b265b, type: 3}
-  EyesLights:
-  - {fileID: 1158961016468134768}
-  - {fileID: 2002004615924343533}
+  m_Offset: {x: 0.23033655, y: -0.08916247}
+  m_Size: {x: 1.0943267, y: 2.236675}
+  m_Direction: 0

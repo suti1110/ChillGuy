@@ -180,7 +180,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 5fcad832e2a23524abbfb54acfad134e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -501,7 +501,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 5fcad832e2a23524abbfb54acfad134e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -783,7 +783,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 5fcad832e2a23524abbfb54acfad134e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -981,37 +981,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 573590553710066102, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 573590553710066102, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b1a0e0db61f9c3e429a6ae1d4e495073, type: 3}
-    - target: {fileID: 2109625161268759089, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 6.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 2109625161268759089, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 9.66
-      objectReference: {fileID: 0}
     - target: {fileID: 2882137995803088567, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
       propertyPath: m_Name
       value: ChillGuy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8360653856842967367, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2492632
-      objectReference: {fileID: 0}
-    - target: {fileID: 8360653856842967367, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.26379523
-      objectReference: {fileID: 0}
-    - target: {fileID: 8360653856842967367, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2492632
       objectReference: {fileID: 0}
     - target: {fileID: 8360653856842967367, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
       propertyPath: m_LocalPosition.x
