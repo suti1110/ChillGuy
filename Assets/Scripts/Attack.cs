@@ -36,7 +36,7 @@ public class Attack : MonoBehaviour
                 EyesLights[0].transform.rotation = Quaternion.Euler(0, 90, -90);
                 EyesLights[1].SetActive(true);
                 EyesLights[1].transform.rotation = Quaternion.Euler(0, 0, 90);
-                EyesLights[1].transform.position = new Vector3(transform.position.x + 17.14f, transform.position.y, transform.position.z);
+                EyesLights[1].transform.position = new Vector3(transform.position.x + 17.14f, transform.position.y + 0.62f, transform.position.z);
             }
             else if (!GetComponent<SpriteRenderer>().flipX)
             {
@@ -44,7 +44,7 @@ public class Attack : MonoBehaviour
                 EyesLights[0].transform.rotation = Quaternion.Euler(180, 90, -90);
                 EyesLights[1].SetActive(true);
                 EyesLights[1].transform.rotation = Quaternion.Euler(0, 0, 270);
-                EyesLights[1].transform.position = new Vector3(transform.position.x - 17.14f, transform.position.y, transform.position.z);
+                EyesLights[1].transform.position = new Vector3(transform.position.x - 17.14f, transform.position.y + 0.62f, transform.position.z);
             }
         }
         else

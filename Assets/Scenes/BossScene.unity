@@ -827,10 +827,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneChanger
       objectReference: {fileID: 0}
-    - target: {fileID: 6733410756170089408, guid: 20f06b6230c26e942bd48fd1d69c5da4, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8296154671182939483, guid: 20f06b6230c26e942bd48fd1d69c5da4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
