@@ -5,9 +5,15 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int HP = 20;
-
-    protected Collider2D AttackRange(float Range)
+    public enum Type
     {
-        return Physics2D.OverlapCircle(transform.position, Range);
+        Normal,
+        Boss
+    }
+    public Type type;
+
+    protected Collider2D[] AttackRange(float Range)
+    {
+        return Physics2D.OverlapCircleAll(transform.position, Range, 6);
     }
 }
