@@ -6,6 +6,7 @@ public class Move : MonoBehaviour
 {
     Rigidbody2D rb;
     [SerializeField] private float MoveSpeed;
+    [SerializeField] private float JumpForce;
 
     private void Awake()
     {
@@ -14,6 +15,7 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * MoveSpeed, rb.velocity.y);
+        rb.AddForce(new Vector2(0, Input.GetAxisRaw("Vertical") * JumpForce), ForceMode2D.Impulse);
     }
 }
