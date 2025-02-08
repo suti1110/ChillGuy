@@ -19,29 +19,31 @@ public class GetDamage : MonoBehaviour
 
     public void ApplyDamage()
     {
-        health -= 1;
-        Debug.Log("Damage Applied. Remaining Health: " + health);
-        FindObjectOfType<HeartDisplay>().UpdateHeartDisplay();
-        objectRenderer.material.color = new Color(255, 0, 0, 0.4f);
-        gameObject.layer = 7;
-        StartCoroutine(WaitAction.wait(0.5f, () =>
+        if (!Dialogue.talking)
         {
-            objectRenderer.material.color = originalColor - new Color(0, 0, 0, 0.6f);
-        }));
-        StartCoroutine(WaitAction.wait(2f, () =>
-        {
-            objectRenderer.material.color = originalColor;
-            gameObject.layer = 6;
-        }));
-        if (health <= 0)
-        {
-            Die();
+            health -= 1;
+            Debug.Log("Damage Applied. Remaining Health: " + health);
+            FindObjectOfType<HeartDisplay>().UpdateHeartDisplay();
+            objectRenderer.material.color = new Color(255, 0, 0, 0.4f);
+            gameObject.layer = 7;
+            StartCoroutine(WaitAction.wait(0.5f, () =>
+            {
+                objectRenderer.material.color = originalColor - new Color(0, 0, 0, 0.6f);
+            }));
+            StartCoroutine(WaitAction.wait(2f, () =>
+            {
+                objectRenderer.material.color = originalColor;
+                gameObject.layer = 6;
+            }));
+            if (health <= 0)
+            {
+                Die();
+            }
         }
     }
 
     private void Die()
     {
-        Debug.Log("Player has died!");
-        Destroy(gameObject);
+        FadeInOut.SceneChange("GameOver");
     }
 }

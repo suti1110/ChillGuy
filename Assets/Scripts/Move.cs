@@ -20,23 +20,29 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * MoveSpeed, rb.velocity.y);
-        if (rb.velocity.x > 0) GetComponent<SpriteRenderer>().flipX = true;
-        else if (rb.velocity.x < 0) GetComponent<SpriteRenderer>().flipX = false;
-        anim.SetBool("isMoving", rb.velocity.x != 0);
+        if (!Dialogue.talking)
+        {
+            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * MoveSpeed, rb.velocity.y);
+            if (rb.velocity.x > 0) GetComponent<SpriteRenderer>().flipX = true;
+            else if (rb.velocity.x < 0) GetComponent<SpriteRenderer>().flipX = false;
+            anim.SetBool("isMoving", rb.velocity.x != 0);
+        }
     }
 
     private void Update()
     {
-        if (isGround && Input.GetKeyDown(KeyCode.Space))
+        if (!Dialogue.talking)
         {
-            rb.AddForce(new Vector2(0, Input.GetAxisRaw("Vertical") * JumpForce), ForceMode2D.Impulse);
-            isGround = false;
-            anim.SetBool("isJumping", true);
-        }
-        if (rb.velocity == Vector2.zero)
-        {
-            Attack.ChillGage += 10 * Time.deltaTime;
+            if (isGround && Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(new Vector2(0, Input.GetAxisRaw("Vertical") * JumpForce), ForceMode2D.Impulse);
+                isGround = false;
+                anim.SetBool("isJumping", true);
+            }
+            if (rb.velocity == Vector2.zero)
+            {
+                Attack.ChillGage += 10 * Time.deltaTime;
+            }
         }
     }
 
