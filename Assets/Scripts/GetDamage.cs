@@ -22,10 +22,13 @@ public class GetDamage : MonoBehaviour
         gameObject.layer = 7;
         StartCoroutine(WaitAction.wait(0.5f, () =>
         {
+            objectRenderer.material.color = originalColor - new Color(0, 0, 0, 0.6f);
+        }));
+        StartCoroutine(WaitAction.wait(2f, () =>
+        {
             objectRenderer.material.color = originalColor;
             gameObject.layer = 6;
         }));
-
         if (health <= 0)
         {
             Die();
