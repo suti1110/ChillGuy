@@ -13,7 +13,7 @@ public class GetDamage : MonoBehaviour
         originalColor = objectRenderer.material.color;
     }
 
-    public void ApplyDamage(Transform collision)
+    public void ApplyDamage()
     {
         health -= 1;
         Debug.Log("Damage Applied. Remaining Health: " + health);

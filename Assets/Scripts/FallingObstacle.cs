@@ -19,8 +19,9 @@ public class FallingObstacle : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Ground와 충돌하면 원래 위치로 되돌리기
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Player"))
         {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             transform.position = originalPosition;
         }
     }
