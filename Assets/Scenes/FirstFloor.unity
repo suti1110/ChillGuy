@@ -2599,10 +2599,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7889317111431489259, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 707c723953999374f8e1faecf6dd3e90, type: 3}
     - target: {fileID: -3309595557427580053, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
       propertyPath: image
       value: 
       objectReference: {fileID: 147643054}
+    - target: {fileID: 2067264152468054731, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
+      propertyPath: walkingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 707c723953999374f8e1faecf6dd3e90, type: 3}
     - target: {fileID: 2882137995803088567, guid: c2c2738862ec1544194fb22e5953d836, type: 3}
       propertyPath: m_Name
       value: ChillGuy

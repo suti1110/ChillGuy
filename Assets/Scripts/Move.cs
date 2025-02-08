@@ -10,20 +10,45 @@ public class Move : MonoBehaviour
     [SerializeField] private float JumpForce;
     bool isGround = false;
     Animator anim;
+    public AudioClip walkingSound;
+    private AudioSource audioSource;
+    private bool isWalking;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Awake()
     {
-        rb  = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
+        // Move the character horizontally based on input
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * MoveSpeed, rb.velocity.y);
-        if (rb.velocity.x > 0) GetComponent<SpriteRenderer>().flipX = true;
-        else if (rb.velocity.x < 0) GetComponent<SpriteRenderer>().flipX = false;
+
+        // Flip the sprite depending on the movement direction
+        if (rb.velocity.x > 0)
+            spriter.flipX = true;
+        else if (rb.velocity.x < 0)
+            spriter.flipX = false;
+
+        // Set the "isMoving" animation parameter based on whether the character is moving
         anim.SetBool("isMoving", rb.velocity.x != 0);
+
+        // Play walking sound when moving and stop when not
+        if (rb.velocity.x != 0 && !audioSource.isPlaying && isGround)
+        {
+            audioSource.PlayOneShot(walkingSound); // Play walking sound
+        }
+        else if (rb.velocity.x == 0 && audioSource.isPlaying)
+        {
+            audioSource.Stop(); // Stop walking sound
+        }
     }
 
     private void Update()
