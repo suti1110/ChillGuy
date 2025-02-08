@@ -8,7 +8,7 @@ public class ObstacleCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // Player와 충돌 시 GetDamage 함수 호출
-            collision.gameObject.GetComponent<GetDamage>().ApplyDamage(transform);
+            collision.gameObject.GetComponent<GetDamage>().ApplyDamage();
         }
     }
 }

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,15 @@ public class EvilGuy : Enemy
     public float Centre = 0;
     public float Size = 25;
     Animator anim;
+    public Sprite JumpTiming;
+    Transform player;
+    public GameObject particle;
+    public GameObject ChillLi;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -27,35 +33,53 @@ public class EvilGuy : Enemy
         if (attackPendingTime <= 0)
         {
             anim.SetBool("Walking", false);
-            Collider2D[] hitColliders1 = AttackRange(1.5f);
+            Collider2D[] hitColliders1 = AttackRange(2f);
             Collider2D[] hitColliders2 = AttackRange(6f);
             if (hitColliders2.Length > 0)
             {
                 if (hitColliders1.Length > 0)
                 {
                     attackPendingTime = 0.75f;
-                    StartCoroutine(WaitAction.wait(0.2f, () =>
+                    anim.SetTrigger("ShortAttack");
+                    GetComponent<SpriteRenderer>().flipX = transform.position.x - player.position.x < 0;
+                    StartCoroutine(WaitAction.wait(0.15f, () =>
                     {
                         if (hitColliders1.Length > 0)
                         {
-                            anim.SetTrigger("ShortAttack");
-                            Debug.Log("플레이어 데미지!");
+                            player.GetComponent<GetDamage>().ApplyDamage();
                         }
                     }));
                 }
                 else
                 {
                     attackPendingTime = 1.5f;
-                    StartCoroutine(WaitAction.wait(0.25f, () =>
+                    anim.SetTrigger("MidAttack");
+                    GetComponent<SpriteRenderer>().flipX = transform.position.x - player.position.x < 0;
+                    StartCoroutine(WaitAction.wait(0.2f, () =>
                     {
-                        Debug.Log("Chill리 소스 소환");
+                        Instantiate(ChillLi, transform.position, Quaternion.identity);
                     }));
                 }
             }
             else
             {
                 attackPendingTime = 3f;
-                Debug.Log("점프 공격!");
+                anim.SetTrigger("LongAttack");
+                StartCoroutine(WaitAction.wait(() => { return gameObject.GetComponent<SpriteRenderer>().sprite == JumpTiming; }, () =>
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.gravityScale = 0;
+                    DOTween.To(() => transform.position, x => transform.position = x, new Vector3(player.position.x, player.position.y + 5), 0.5f);
+                    StartCoroutine(WaitAction.wait(0.5f, () =>
+                    {
+                        rb.velocity = new Vector2(0, -50);
+                        StartCoroutine(WaitAction.wait(0.1f, () =>
+                        {
+                            particle.GetComponent<ParticleSystem>().Play();
+                            rb.gravityScale = 1;
+                        }));
+                    }));
+                }));
             }
         }
         else
@@ -88,7 +112,7 @@ public class EvilGuy : Enemy
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("플레이어 데미지");
+            player.GetComponent<GetDamage>().ApplyDamage();
         }
     }
 }
