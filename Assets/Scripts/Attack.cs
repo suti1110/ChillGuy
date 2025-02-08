@@ -11,11 +11,13 @@ public class Attack : MonoBehaviour
     Rigidbody2D rb;
     public static float ChillGage = 100;
     public GameObject[] EyesLights;
+    GameObject Enemy;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         ChillGage = 100;
+        Enemy = GameObject.Find("EvilGuy");
     }
 
     private void Update()
@@ -26,7 +28,7 @@ public class Attack : MonoBehaviour
             DOTween.To(() => transform.position, x => transform.position = x, new Vector3(transform.position.x + (rb.velocity.x > 0 ? 1 : rb.velocity.x < 0 ? -1 : 0) * 10, transform.position.y), DashTime);
             StartCoroutine(Dash());
         }
-        if (Input.GetKey(KeyCode.K))
+        if (Enemy != null && Input.GetKey(KeyCode.K))
         {
             if (GetComponent<SpriteRenderer>().flipX)
             {
