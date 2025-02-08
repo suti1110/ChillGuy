@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1256848475426346838}
   - component: {fileID: 2109625161268759089}
   - component: {fileID: 3640939722274126722}
+  - component: {fileID: -3309595557427580053}
   m_Layer: 6
   m_Name: ChillGuy
   m_TagString: Player
@@ -187,3 +188,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+--- !u!114 &-3309595557427580053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2882137995803088567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9e020704ee4a1439b88d0eb9433a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AfterImage: {fileID: 3879598417576605991, guid: 340d3cf5afa7b444aaab1aec305b265b, type: 3}

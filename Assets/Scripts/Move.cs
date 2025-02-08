@@ -17,6 +17,8 @@ public class Move : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * MoveSpeed, rb.velocity.y);
+        if (rb.velocity.x > 0) GetComponent<SpriteRenderer>().flipX = true;
+        else if (rb.velocity.x < 0) GetComponent<SpriteRenderer>().flipX = false;
     }
 
     private void Update()
@@ -25,6 +27,10 @@ public class Move : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, Input.GetAxisRaw("Vertical") * JumpForce), ForceMode2D.Impulse);
             isGround = false;
+        }
+        if (rb.velocity == Vector2.zero)
+        {
+            Attack.ChillGage += 10 * Time.deltaTime;
         }
     }
 
