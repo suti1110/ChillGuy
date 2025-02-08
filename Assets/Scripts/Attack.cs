@@ -10,14 +10,12 @@ public class Attack : MonoBehaviour
     float DashTime = 0.5f;
     Rigidbody2D rb;
     public static float ChillGage = 100;
-    GameObject Enemy;
-    float LookingTime = 1;
+    public GameObject[] EyesLights;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         ChillGage = 100;
-        if (GameObject.Find("EvilGuy") != null) Enemy = GameObject.Find("EvilGuy");
     }
 
     private void Update()
@@ -28,16 +26,29 @@ public class Attack : MonoBehaviour
             DOTween.To(() => transform.position, x => transform.position = x, new Vector3(transform.position.x + (rb.velocity.x > 0 ? 1 : rb.velocity.x < 0 ? -1 : 0) * 10, transform.position.y), DashTime);
             StartCoroutine(Dash());
         }
-        if (Enemy != null && Input.GetKey(KeyCode.K))
+        if (Input.GetKey(KeyCode.K))
         {
-            if (Enemy.transform.position.x - transform.position.x > 0 && GetComponent<SpriteRenderer>().flipX)
+            if (GetComponent<SpriteRenderer>().flipX)
             {
-
+                EyesLights[0].SetActive(true);
+                EyesLights[0].transform.rotation = Quaternion.Euler(0, 90, -90);
+                EyesLights[1].SetActive(true);
+                EyesLights[1].transform.rotation = Quaternion.Euler(0, 0, 90);
+                EyesLights[1].transform.position = new Vector3(transform.position.x + 17.14f, transform.position.y, transform.position.z);
             }
-            else if (Enemy.transform.position.x - transform.position.x < 0 && !GetComponent<SpriteRenderer>().flipX)
+            else if (!GetComponent<SpriteRenderer>().flipX)
             {
-
+                EyesLights[0].SetActive(true);
+                EyesLights[0].transform.rotation = Quaternion.Euler(180, 90, -90);
+                EyesLights[1].SetActive(true);
+                EyesLights[1].transform.rotation = Quaternion.Euler(0, 0, 270);
+                EyesLights[1].transform.position = new Vector3(transform.position.x - 17.14f, transform.position.y, transform.position.z);
             }
+        }
+        else
+        {
+            EyesLights[0].SetActive(false);
+            EyesLights[1].SetActive(false);
         }
     }
 
