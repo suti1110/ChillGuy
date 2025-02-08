@@ -14,6 +14,9 @@ public class Attack : MonoBehaviour
     public GameObject[] EyesLights;
     GameObject Enemy;
     public Image image;
+    public AudioClip LazerSound;
+    private AudioSource LazerSource;
+    private bool isLazering;
 
     private void Awake()
     {
@@ -22,6 +25,12 @@ public class Attack : MonoBehaviour
         Enemy = GameObject.Find("EvilGuy");
     }
 
+    void Start()
+    {
+        LazerSource = gameObject.AddComponent<AudioSource>();
+        LazerSource.clip = LazerSound;
+        LazerSource.loop = true;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.J) && ChillGage >= 30)
@@ -55,6 +64,27 @@ public class Attack : MonoBehaviour
             EyesLights[1].SetActive(false);
         }
         image.fillAmount = ChillGage / 100f;
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (!isLazering)
+            {
+                // 레이저 소리가 재생되지 않고 있으면 재생
+                LazerSource.Play();
+                isLazering = true;
+            }
+        }
+
+        // 'k' 키를 뗐을 때 소리가 멈추도록
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            if (isLazering)
+            {
+                // 레이저 소리가 재생되고 있으면 정지
+                LazerSource.Stop();
+                isLazering = false;
+            }
+        }
     }
 
     IEnumerator Dash()

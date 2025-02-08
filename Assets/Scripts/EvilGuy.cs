@@ -15,11 +15,16 @@ public class EvilGuy : Enemy
     Transform player;
     public GameObject particle;
     public GameObject ChillLi;
+    public AudioClip JumpingSound;
+    private AudioSource audioSource;
+    public AudioClip SmashSound;
+
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -70,11 +75,15 @@ public class EvilGuy : Enemy
                     Rigidbody2D rb = GetComponent<Rigidbody2D>();
                     rb.gravityScale = 0;
                     DOTween.To(() => transform.position, x => transform.position = x, new Vector3(player.position.x, player.position.y + 5), 0.5f);
+                    audioSource.clip = JumpingSound;
+                    audioSource.Play();
                     StartCoroutine(WaitAction.wait(0.5f, () =>
                     {
                         rb.velocity = new Vector2(0, -50);
                         StartCoroutine(WaitAction.wait(0.1f, () =>
                         {
+                            audioSource.clip = SmashSound;
+                            audioSource.Play();
                             particle.GetComponent<ParticleSystem>().Play();
                             rb.gravityScale = 1;
                         }));
