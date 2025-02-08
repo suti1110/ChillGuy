@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public int HP = 20;
+    public float HP = 20;
     public enum Type
     {
         Normal,

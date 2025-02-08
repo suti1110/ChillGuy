@@ -57,8 +57,8 @@ public class Attack : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             GameObject temp = Instantiate(AfterImage, transform.position, Quaternion.identity);
-            SpriteRenderer temp2 = temp.GetComponent<SpriteRenderer>();
-            temp2 = GetComponent<SpriteRenderer>();
+            temp.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
+            temp.GetComponent<SpriteRenderer>().flipX = GetComponent<SpriteRenderer>().flipX;
             yield return new WaitForSeconds(DashTime / 10);
         }
     }

@@ -33,8 +33,8 @@ public class EvilGuy : Enemy
         if (attackPendingTime <= 0)
         {
             anim.SetBool("Walking", false);
-            Collider2D[] hitColliders1 = AttackRange(2f);
-            Collider2D[] hitColliders2 = AttackRange(6f);
+            Collider2D[] hitColliders1 = AttackRange(2.5f);
+            Collider2D[] hitColliders2 = AttackRange(10f);
             if (hitColliders2.Length > 0)
             {
                 if (hitColliders1.Length > 0)
@@ -113,6 +113,15 @@ public class EvilGuy : Enemy
         if (collision.gameObject.CompareTag("Player"))
         {
             player.GetComponent<GetDamage>().ApplyDamage();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Attack"))
+        {
+            HP -= Time.deltaTime;
+            if (HP <= 0) Destroy(gameObject);
         }
     }
 }
