@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/FirstFloor.unity
+    guid: 251bc4768a755e045bd32c7e80557f19
+  - enabled: 1
     path: Assets/Scenes/SixthFloor.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/FifthFloor.unity
+    guid: 8b646bb32d58747429d9cbd9fcc6cd9a
+  - enabled: 1
+    path: Assets/Scenes/BossScene.unity
+    guid: 0dd392d42380eb74fb2d578956277f77
+  - enabled: 1
+    path: Assets/Scenes/FourthFloor.unity
+    guid: c94785ea54abd2144a49a82b6b2a1c9e
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor.unity
+    guid: 5bdff8d1be3ea774fabfc96ed4ff947c
+  - enabled: 1
+    path: Assets/Scenes/ThirdFloor.unity
+    guid: c40841022b94b284fb638158ddcbb890
   m_configObjects: {}

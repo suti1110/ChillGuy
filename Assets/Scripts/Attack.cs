@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Attack : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Attack : MonoBehaviour
     public static float ChillGage = 100;
     public GameObject[] EyesLights;
     GameObject Enemy;
+    public Image image;
 
     private void Awake()
     {
@@ -52,6 +54,7 @@ public class Attack : MonoBehaviour
             EyesLights[0].SetActive(false);
             EyesLights[1].SetActive(false);
         }
+        image.fillAmount = ChillGage / 100f;
     }
 
     IEnumerator Dash()
