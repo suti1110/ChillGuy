@@ -4857,7 +4857,7 @@ Transform:
   m_GameObject: {fileID: 2002004615924343533}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 17.14, y: 0.01, z: 0}
+  m_LocalPosition: {x: 17.14, y: 0.62, z: 0}
   m_LocalScale: {x: 1, y: 29.982384, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4975,6 +4975,7 @@ GameObject:
   - component: {fileID: 3640939722274126722}
   - component: {fileID: -3309595557427580053}
   - component: {fileID: 7344747336542348356}
+  - component: {fileID: 6077084990180914228}
   m_Layer: 6
   m_Name: ChillGuy
   m_TagString: Player
@@ -5153,6 +5154,27 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.23033655, y: -0.08916247}
-  m_Size: {x: 1.0943267, y: 2.236675}
+  m_Offset: {x: 0.23033655, y: -0.095206976}
+  m_Size: {x: 1.0943267, y: 2.1723819}
   m_Direction: 0
+--- !u!95 &6077084990180914228
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2882137995803088567}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6db1d315c958d0c469065283f07c4f90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
