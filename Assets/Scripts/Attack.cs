@@ -1,7 +1,6 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -104,6 +103,14 @@ public class Attack : MonoBehaviour
             temp.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
             temp.GetComponent<SpriteRenderer>().flipX = GetComponent<SpriteRenderer>().flipX;
             yield return new WaitForSeconds(DashTime / 10);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Contains("Wall"))
+        {
+            DOTween.Clear();
         }
     }
 }

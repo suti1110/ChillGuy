@@ -77,11 +77,15 @@ public class EvilGuy : Enemy
                         Rigidbody2D rb = GetComponent<Rigidbody2D>();
                         rb.gravityScale = 0;
                         DOTween.To(() => transform.position, x => transform.position = x, new Vector3(player.position.x, player.position.y + 5), 0.5f);
+                        audioSource.clip = JumpingSound;
+                        audioSource.Play();
                         StartCoroutine(WaitAction.wait(0.5f, () =>
                         {
                             rb.velocity = new Vector2(0, -50);
                             StartCoroutine(WaitAction.wait(0.1f, () =>
                             {
+                                audioSource.clip = SmashSound;
+                                audioSource.Play();
                                 particle.GetComponent<ParticleSystem>().Play();
                                 rb.gravityScale = 1;
                             }));
@@ -91,29 +95,8 @@ public class EvilGuy : Enemy
             }
             else
             {
-                attackPendingTime = 3f;
-                anim.SetTrigger("LongAttack");
-                StartCoroutine(WaitAction.wait(() => { return gameObject.GetComponent<SpriteRenderer>().sprite == JumpTiming; }, () =>
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.gravityScale = 0;
-                    DOTween.To(() => transform.position, x => transform.position = x, new Vector3(player.position.x, player.position.y + 5), 0.5f);
-                    audioSource.clip = JumpingSound;
-                    audioSource.Play();
-                    StartCoroutine(WaitAction.wait(0.5f, () =>
-                    {
-                        rb.velocity = new Vector2(0, -50);
-                        StartCoroutine(WaitAction.wait(0.1f, () =>
-                        {
-                            audioSource.clip = SmashSound;
-                            audioSource.Play();
-                            particle.GetComponent<ParticleSystem>().Play();
-                            rb.gravityScale = 1;
-                        }));
-                    }));
-                }));
+                Move();
             }
-            Move();
         }
     }
 
